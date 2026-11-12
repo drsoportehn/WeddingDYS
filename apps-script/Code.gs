@@ -11,7 +11,7 @@
  *  2. Configuración del proyecto > Propiedades del script:
  *       SUPABASE_URL          https://TU-PROYECTO.supabase.co
  *       SUPABASE_SERVICE_KEY  service_role key (secreta, solo aquí)
- *       SITE_URL              https://TU-USUARIO.github.io/boda/
+ *       SITE_URL              https://drsoportehn.github.io/WeddingDYS/
  *  3. Ejecutar una vez la función setup() y autorizar permisos.
  *  4. Implementar > Nueva implementación > Aplicación web
  *       Ejecutar como: Yo · Quién tiene acceso: Cualquier usuario
@@ -78,11 +78,12 @@ function doPost(e) {
     const code = String(body.code || '').trim().toUpperCase();
     if (!/^[A-Z0-9]{4,16}$/.test(code)) return out({ ok: false, error: 'codigo' });
 
+    // El candado va antes de leer: así dos confirmaciones seguidas no envían el pase dos veces
+    lock.waitLock(20000);
     const inv = supa_('invitations?code=eq.' + encodeURIComponent(code) + '&select=*')[0];
     if (!inv || inv.status !== 'confirmado' || !inv.email) return out({ ok: false, error: 'no aplica' });
     if (inv.calendar_sent_at) return out({ ok: true, already: true });
 
-    lock.waitLock(20000);
     const id = props_().getProperty('EVENT_ID');
     const ev = Calendar.Events.get('primary', id);
     const attendees = ev.attendees || [];
@@ -106,26 +107,46 @@ function doPost(e) {
 function sendPass_(inv) {
   const s = settings_();
   const url = props_().getProperty('SITE_URL') + '?c=' + inv.code;
-  const qr = UrlFetchApp.fetch('https://quickchart.io/qr?size=400&margin=2&dark=722F40&text=' + encodeURIComponent(url)).getBlob().setName('pase.png');
-  const fecha = Utilities.formatDate(new Date(s.event_date), TZ, "dd/MM/yyyy 'a las' h:mm a");
+  const qr = UrlFetchApp.fetch('https://quickchart.io/qr?size=440&margin=2&dark=722F40&text=' + encodeURIComponent(url)).getBlob().setName('pase.png');
+  const fecha = Utilities.formatDate(new Date(s.event_date), TZ, "EEEE d 'de' MMMM 'de' yyyy · h:mm a");
+  const lugar = [s.venue_name, s.venue_city].filter(String).join(', ');
+  const n = inv.confirmed_guests;
   const html =
-    '<div style="font-family:Georgia,serif;color:#2B2124;max-width:520px">' +
-    '<h2 style="color:#722F40">¡Gracias por confirmar, ' + inv.family_name + '!</h2>' +
-    '<p>Reservamos <b>' + inv.confirmed_guests + '</b> lugar(es) para la boda de ' + s.couple_names + '.</p>' +
-    '<p>' + fecha + '<br>' + [s.venue_name, s.venue_city].filter(String).join(', ') + '</p>' +
-    '<p>Este es su pase de ingreso. Muéstrenlo en la entrada:</p>' +
-    '<p><img src="cid:pase" width="220" height="220" alt="Código QR de ingreso"></p>' +
-    '<p>Si necesitan cambiar su respuesta: <a href="' + url + '">' + url + '</a></p></div>';
+    '<div style="background:#F6F2E7;padding:28px 12px;font-family:Georgia,\'Times New Roman\',serif;color:#2B2124">' +
+    '<div style="max-width:480px;margin:0 auto;background:#FFFDF8;border:1px solid #E9D9BC;text-align:center">' +
+      '<div style="background:#722F40;color:#F6F2E7;padding:26px 20px 22px">' +
+        '<div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#E9D9BC">PASE DE INGRESO</div>' +
+        '<div style="font-size:30px;font-style:italic;margin-top:6px">' + esc_(s.couple_names) + '</div>' +
+      '</div>' +
+      '<div style="padding:26px 24px 8px">' +
+        '<p style="font-size:22px;font-style:italic;color:#4E1F2C;margin:0 0 8px">¡Gracias por confirmar, ' + esc_(inv.family_name) + '!</p>' +
+        '<p style="font-size:16px;margin:0 0 18px">Reservamos <b>' + n + '</b> ' + (n === 1 ? 'lugar' : 'lugares') + ' para ustedes.</p>' +
+        '<p style="font-size:15px;color:#80635B;margin:0 0 4px;text-transform:capitalize">' + esc_(fecha) + '</p>' +
+        '<p style="font-size:15px;color:#80635B;margin:0 0 20px">' + esc_(lugar) + '</p>' +
+        '<img src="cid:pase" width="220" height="220" alt="Código QR de ingreso" style="display:block;margin:0 auto">' +
+        '<p style="font-family:Arial,sans-serif;font-size:12px;color:#80635B;margin:14px 0 22px">Muestren este código en la entrada el día de la boda.</p>' +
+      '</div>' +
+      '<div style="border-top:1px dashed #D7C2A5;padding:16px 20px 22px;font-family:Arial,sans-serif;font-size:12px;color:#80635B">' +
+        '¿Necesitan cambiar su respuesta? <a href="' + url + '" style="color:#722F40">Abran su invitación</a>' +
+      '</div>' +
+    '</div></div>';
   MailApp.sendEmail({
     to: inv.email,
-    subject: 'Tu pase para la boda de ' + s.couple_names,
+    subject: 'Su pase para la boda de ' + s.couple_names,
     htmlBody: html,
     inlineImages: { pase: qr },
     name: s.couple_names
   });
 }
 
+function esc_(t) {
+  return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
+
 /** Prueba manual desde el editor: cambia el código por uno confirmado con correo. */
 function testDoPost() {
-  Logger.log(doPost({ postData: { contents: JSON.stringify({ code: 'PRUEBA01' }) } }).getContent());
+  const code = 'CAMBIA_ESTE_CODIGO';
+  Logger.log(doPost({ postData: { contents: JSON.stringify({ code: code }) } }).getContent());
 }
