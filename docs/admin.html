@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Panel de la boda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="admin-body">
+  <div class="topbar">
+    <h1>Panel de la boda</h1>
+    <div><span class="who" id="who"></span> <a class="btn ghost small" href="checkin.html">Abrir check-in</a> <button class="btn ghost small" id="logout">Cerrar sesión</button></div>
+  </div>
+
+  <div class="auth panel" id="auth" hidden>
+    <h2>Iniciar sesión</h2>
+    <form id="auth-form">
+      <label for="auth-email">Correo</label>
+      <input id="auth-email" type="email" autocomplete="username" required>
+      <label for="auth-pass">Contraseña</label>
+      <input id="auth-pass" type="password" autocomplete="current-password" required>
+      <p class="hint" id="auth-error" role="alert" style="color:var(--error)"></p>
+      <div class="actions"><button class="btn" type="submit">Entrar</button></div>
+    </form>
+  </div>
+
+  <div class="wrap" id="app" hidden>
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="resumen">Resumen</button>
+      <button role="tab" aria-selected="false" data-tab="invitados">Invitaciones</button>
+      <button role="tab" aria-selected="false" data-tab="evento">Datos del evento</button>
+      <button role="tab" aria-selected="false" data-tab="fotos">Fotos</button>
+    </nav>
+
+    <!-- RESUMEN -->
+    <section data-panel="resumen">
+      <div class="stats" id="stats"></div>
+      <h2 style="margin-top:2rem">Últimas respuestas</h2>
+      <div class="table-wrap"><table><thead><tr><th>Invitación</th><th>Respuesta</th><th>Personas</th><th>Mensaje</th><th>Fecha</th></tr></thead><tbody id="recent"></tbody></table></div>
+    </section>
+
+    <!-- INVITACIONES -->
+    <section data-panel="invitados" hidden>
+      <form class="panel" id="add-form">
+        <h2>Nueva invitación</h2>
+        <div class="grid2">
+          <div><label for="f-name">Familia o persona</label><input id="f-name" required placeholder="Familia Pérez"></div>
+          <div><label for="f-max">Lugares asignados</label><input id="f-max" type="number" min="1" max="20" value="2" required></div>
+          <div><label for="f-side">Lado</label><select id="f-side"><option>Novio</option><option>Novia</option><option>Ambos</option></select></div>
+          <div><label for="f-phone">Teléfono (WhatsApp)</label><input id="f-phone" placeholder="50499998888"></div>
+          <div><label for="f-email">Correo (opcional)</label><input id="f-email" type="email"></div>
+          <div><label for="f-notes">Notas internas</label><input id="f-notes"></div>
+        </div>
+        <div class="actions"><button class="btn" type="submit">Agregar invitación</button></div>
+      </form>
+
+      <details class="panel" style="margin-top:1rem">
+        <summary><strong>Agregar varias a la vez</strong></summary>
+        <p class="hint">Una invitación por línea con el formato: <code>Familia;lugares;teléfono;lado</code>. Ejemplo: <code>Familia López;4;50499998888;Novio</code></p>
+        <textarea id="bulk" rows="6"></textarea>
+        <div class="actions"><button class="btn ghost" id="bulk-add" type="button">Agregar lista</button></div>
+      </details>
+
+      <div class="toolbar">
+        <div><label for="search">Buscar</label><input id="search" placeholder="Nombre o código"></div>
+        <div><label for="filter">Estado</label><select id="filter"><option value="">Todos</option><option value="pendiente">Pendiente</option><option value="confirmado">Confirmado</option><option value="no_asiste">No asiste</option></select></div>
+        <button class="btn ghost" id="export" type="button">Descargar CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Invitación</th><th>Código</th><th>Lugares</th><th>Estado</th><th>Confirmados</th><th>Ingresaron</th><th>Calendario</th><th></th></tr></thead>
+          <tbody id="inv-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- EVENTO -->
+    <section data-panel="evento" hidden>
+      <form class="panel" id="settings-form">
+        <h2>Datos del evento</h2>
+        <div class="grid2">
+          <div><label for="s-names">Nombres</label><input id="s-names" required></div>
+          <div><label for="s-mono">Monograma del sello</label><input id="s-mono" maxlength="8"></div>
+          <div><label for="s-date">Inicio (hora de Honduras)</label><input id="s-date" type="datetime-local" required></div>
+          <div><label for="s-end">Fin</label><input id="s-end" type="datetime-local" required></div>
+          <div><label for="s-deadline">Fecha límite para confirmar</label><input id="s-deadline" type="date"></div>
+          <div><label for="s-dress">Código de vestimenta (título)</label><input id="s-dress" placeholder="Formal"></div>
+          <div><label for="s-venue">Lugar</label><input id="s-venue"></div>
+          <div><label for="s-city">Ciudad</label><input id="s-city"></div>
+          <div><label for="s-address">Dirección</label><input id="s-address"></div>
+          <div><label for="s-maps">Enlace de Google Maps</label><input id="s-maps" type="url" placeholder="https://maps.app.goo.gl/..."></div>
+        </div>
+        <label for="s-kicker">Frase sobre los nombres (portada)</label>
+        <input id="s-kicker" placeholder="Con la bendición de Dios y de nuestras familias">
+        <label for="s-msg">Mensaje de bienvenida</label>
+        <textarea id="s-msg"></textarea>
+        <label for="s-program">Programa</label>
+        <textarea id="s-program" rows="6"></textarea>
+        <p class="hint">Una actividad por línea con el formato <code>hora | actividad</code>. Ejemplo: <code>4:00 p. m. | Ceremonia</code>. El icono se elige solo según la actividad (bienvenida, ceremonia, cóctel, cena, fiesta, pastel, fotos).</p>
+
+        <div class="grid2">
+          <div><label for="s-quote1">Frase sobre la primera foto grande</label><input id="s-quote1" placeholder="Dos caminos que se encontraron…"></div>
+          <div><label for="s-quote2">Frase sobre la segunda foto grande</label><input id="s-quote2" placeholder="Para siempre"></div>
+        </div>
+
+        <h3 class="sub">Código de vestimenta</h3>
+        <label for="s-dress-note">Texto debajo del título</label>
+        <input id="s-dress-note" placeholder="Nos encantaría verlos en los tonos de nuestra boda">
+        <p class="label-like">Colores sugeridos</p>
+        <div class="color-list" id="palette-list"></div>
+        <button class="btn ghost small" type="button" id="palette-add">+ Agregar color</button>
+        <p class="label-like">Colores que pedimos evitar</p>
+        <div class="color-list" id="avoid-list"></div>
+        <button class="btn ghost small" type="button" id="avoid-add">+ Agregar color</button>
+        <p class="hint">Si cambias fecha, hora o lugar, ejecuta <code>syncEvent</code> en el Apps Script para avisar a quienes ya recibieron la invitación de calendario.</p>
+        <div class="actions"><button class="btn" type="submit">Guardar cambios</button> <a class="btn ghost" href="./" target="_blank">Ver invitación</a></div>
+      </form>
+    </section>
+
+    <!-- FOTOS -->
+    <section data-panel="fotos" hidden>
+      <div class="panel">
+        <h2>Fotos</h2>
+        <p class="hint">Las fotos se reducen automáticamente antes de subirse. En la sección <b>Nuestra historia</b> se muestran las primeras <b>10</b> fotos de esta lista; mientras no subas ninguna, se usan las 10 de la sesión en Bellas Artes. Marca una como portada para usarla como imagen de fondo de la portada (el video sigue reproduciéndose encima).</p>
+        <label for="upload">Subir fotos</label>
+        <input id="upload" type="file" accept="image/*" multiple>
+        <p class="hint" id="upload-status"></p>
+      </div>
+      <div class="photos-admin" id="photo-grid" style="margin-top:1rem"></div>
+    </section>
+  </div>
+
+  <dialog id="qr-dialog">
+    <h2 id="qr-title" style="font-size:1.6rem"></h2>
+    <div class="done"><div class="qr" id="qr-box"></div></div>
+    <p class="hint" id="qr-link" style="word-break:break-all"></p>
+    <div class="actions" style="justify-content:center">
+      <a class="btn small" id="qr-download" download>Descargar QR</a>
+      <button class="btn ghost small" id="qr-copy" type="button">Copiar enlace</button>
+      <a class="btn ghost small" id="qr-wa" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+    </div>
+    <div class="actions" style="justify-content:center"><button class="btn ghost small" id="qr-close" type="button">Cerrar</button></div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/demo-local.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

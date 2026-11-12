@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Check-in de la boda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="admin-body">
+  <div class="topbar">
+    <h1>Check-in</h1>
+    <div><span class="who" id="who"></span> <a class="btn ghost small" href="admin.html">Panel</a> <button class="btn ghost small" id="logout">Cerrar sesión</button></div>
+  </div>
+
+  <div class="auth panel" id="auth" hidden>
+    <h2>Iniciar sesión</h2>
+    <form id="auth-form">
+      <label for="auth-email">Correo</label>
+      <input id="auth-email" type="email" autocomplete="username" required>
+      <label for="auth-pass">Contraseña</label>
+      <input id="auth-pass" type="password" autocomplete="current-password" required>
+      <p class="hint" id="auth-error" role="alert" style="color:var(--error)"></p>
+      <div class="actions"><button class="btn" type="submit">Entrar</button></div>
+    </form>
+  </div>
+
+  <div class="wrap" id="app" hidden>
+    <div class="scanner">
+      <div class="stats" id="totals"></div>
+      <div id="reader" style="margin-top:1rem"></div>
+      <div class="actions">
+        <button class="btn" id="start" type="button">Activar cámara</button>
+        <button class="btn ghost" id="stop" type="button" hidden>Detener cámara</button>
+      </div>
+      <form class="toolbar" id="manual">
+        <div style="flex:1"><label for="manual-code">O escribe el código</label><input id="manual-code" placeholder="PRUEBA01" autocapitalize="characters"></div>
+        <button class="btn ghost" type="submit">Buscar</button>
+      </form>
+
+      <div class="panel result" id="result" hidden aria-live="polite">
+        <p class="big" id="r-name"></p>
+        <p id="r-status"></p>
+        <p id="r-done" class="notice" hidden></p>
+        <label for="r-count">Personas que ingresan ahora</label>
+        <input id="r-count" type="number" min="0">
+        <div class="actions">
+          <button class="btn" id="r-save" type="button">Registrar ingreso</button>
+          <button class="btn ghost" id="r-next" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/demo-local.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/checkin.js"></script>
+</body>
+</html>

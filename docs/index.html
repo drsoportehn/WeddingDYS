@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#4E1F2C">
+  <title>Nuestra boda</title>
+  <meta property="og:title" content="Darwin & Sofía · Nos casamos">
+  <meta property="og:description" content="30 de octubre de 2027 · Santa Rosa de Copán">
+  <meta property="og:image" content="img/og.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23722F40'/><text x='50' y='63' font-family='Georgia' font-size='38' fill='%23E9D9BC' text-anchor='middle'>D·S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/invitacion.css">
+</head>
+<body class="invite is-sealed">
+
+  <!-- ============ Sobre de entrada ============ -->
+  <div class="envelope-stage" id="envelope" role="dialog" aria-modal="true" aria-labelledby="env-to">
+    <div class="envelope" id="env">
+      <div class="env-back"></div>
+      <div class="env-letter">
+        <span class="kicker">Nos casamos</span>
+        <span class="script env-letter-names" id="env-names">Darwin &amp; Sofía</span>
+      </div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <button class="wax" id="open-env" type="button" aria-label="Abrir la invitación">
+        <svg class="wax-svg" viewBox="0 0 140 140" aria-hidden="true">
+          <defs>
+            <radialGradient id="wx-body" cx="35%" cy="28%" r="80%">
+              <stop offset="0" stop-color="#EBD3A2"/>
+              <stop offset=".45" stop-color="#C9A266"/>
+              <stop offset="1" stop-color="#8C6631"/>
+            </radialGradient>
+            <linearGradient id="wx-rim" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F6E6C2" stop-opacity=".9"/>
+              <stop offset=".5" stop-color="#D6B47A" stop-opacity=".2"/>
+              <stop offset="1" stop-color="#6E4D22" stop-opacity=".7"/>
+            </linearGradient>
+            <linearGradient id="wx-well" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#A57D43"/>
+              <stop offset=".55" stop-color="#C39C5E"/>
+              <stop offset="1" stop-color="#DDBF89"/>
+            </linearGradient>
+          </defs>
+          <path d="M133.23 70.00 L133.51 72.22 L133.16 74.42 L132.28 76.55 L131.09 78.59 L129.86 80.56 L128.81 82.50 L128.03 84.47 L127.48 86.48 L127.02 88.53 L126.47 90.55 L125.68 92.49 L124.59 94.30 L123.24 95.97 L121.76 97.52 L120.26 99.02 L118.82 100.50 L117.45 102.01 L116.13 103.52 L114.80 105.00 L113.43 106.45 L112.05 107.87 L110.74 109.34 L109.58 110.98 L108.63 112.90 L107.88 115.14 L107.22 117.64 L106.50 120.24 L105.54 122.69 L104.21 124.74 L102.46 126.22 L100.35 127.08 L98.00 127.40 L95.55 127.39 L93.14 127.27 L90.83 127.23 L88.64 127.37 L86.53 127.66 L84.47 128.02 L82.40 128.34 L80.33 128.56 L78.25 128.68 L76.18 128.77 L74.12 128.90 L72.06 129.11 L70.00 129.39 L67.92 129.62 L65.83 129.67 L63.75 129.43 L61.72 128.91 L59.74 128.19 L57.79 127.44 L55.82 126.88 L53.76 126.62 L51.58 126.69 L49.27 126.96 L46.89 127.20 L44.56 127.14 L42.40 126.58 L40.52 125.44 L38.95 123.79 L37.65 121.77 L36.53 119.62 L35.49 117.50 L34.41 115.55 L33.26 113.78 L32.04 112.16 L30.76 110.63 L29.44 109.17 L28.06 107.76 L26.56 106.45 L24.86 105.27 L22.93 104.20 L20.81 103.18 L18.63 102.10 L16.56 100.85 L14.81 99.35 L13.51 97.55 L12.68 95.52 L12.21 93.35 L11.91 91.14 L11.54 88.99 L10.96 86.93 L10.12 84.93 L9.13 82.94 L8.18 80.90 L7.50 78.78 L7.26 76.59 L7.51 74.37 L8.18 72.16 L9.12 70.00 L10.17 67.91 L11.18 65.89 L12.12 63.92 L12.98 61.99 L13.82 60.09 L14.64 58.23 L15.40 56.39 L16.00 54.52 L16.34 52.57 L16.35 50.47 L16.06 48.20 L15.61 45.78 L15.23 43.29 L15.19 40.86 L15.66 38.63 L16.73 36.71 L18.32 35.14 L20.24 33.85 L22.28 32.71 L24.21 31.58 L25.95 30.34 L27.48 28.94 L28.88 27.42 L30.27 25.88 L31.75 24.42 L33.37 23.11 L35.10 21.96 L36.88 20.90 L38.67 19.87 L40.44 18.80 L42.19 17.70 L43.96 16.62 L45.80 15.66 L47.73 14.87 L49.71 14.25 L51.71 13.71 L53.68 13.08 L55.59 12.20 L57.46 10.98 L59.33 9.47 L61.26 7.83 L63.31 6.35 L65.48 5.31 L67.73 4.93 L70.00 5.28 L72.23 6.27 L74.36 7.69 L76.38 9.28 L78.32 10.80 L80.20 12.14 L82.06 13.27 L83.90 14.24 L85.73 15.14 L87.54 16.01 L89.35 16.84 L91.18 17.58 L93.08 18.16 L95.09 18.57 L97.19 18.87 L99.33 19.19 L101.44 19.69 L103.40 20.48 L105.15 21.62 L106.70 23.02 L108.13 24.56 L109.57 26.06 L111.16 27.37 L113.01 28.47 L115.08 29.41 L117.28 30.33 L119.39 31.41 L121.21 32.79 L122.60 34.52 L123.50 36.57 L123.98 38.83 L124.19 41.19 L124.29 43.52 L124.41 45.77 L124.62 47.93 L124.89 50.02 L125.20 52.06 L125.54 54.07 L125.94 56.05 L126.48 57.99 L127.27 59.90 L128.35 61.80 L129.68 63.73 L131.10 65.73 L132.37 67.82Z" fill="url(#wx-body)"/>
+          <path d="M127.75 69.00 L127.73 71.02 L127.45 73.02 L126.93 74.98 L126.27 76.91 L125.51 78.79 L124.72 80.63 L123.95 82.45 L123.22 84.26 L122.51 86.06 L121.81 87.86 L121.07 89.63 L120.24 91.37 L119.30 93.05 L118.23 94.64 L117.02 96.15 L115.72 97.57 L114.35 98.92 L112.98 100.23 L111.66 101.55 L110.44 102.93 L109.33 104.41 L108.34 106.02 L107.43 107.76 L106.57 109.61 L105.68 111.52 L104.71 113.43 L103.61 115.25 L102.32 116.91 L100.83 118.33 L99.14 119.48 L97.29 120.33 L95.32 120.92 L93.28 121.28 L91.21 121.49 L89.15 121.63 L87.14 121.76 L85.18 121.95 L83.27 122.24 L81.40 122.62 L79.53 123.06 L77.66 123.54 L75.78 123.97 L73.87 124.32 L71.94 124.53 L70.00 124.58 L68.06 124.48 L66.14 124.24 L64.23 123.91 L62.33 123.54 L60.45 123.19 L58.55 122.88 L56.63 122.63 L54.68 122.43 L52.70 122.24 L50.71 121.99 L48.74 121.62 L46.82 121.06 L44.99 120.27 L43.29 119.23 L41.75 117.93 L40.37 116.42 L39.14 114.75 L38.02 113.01 L36.96 111.28 L35.91 109.63 L34.79 108.11 L33.56 106.74 L32.19 105.51 L30.67 104.41 L29.03 103.38 L27.31 102.35 L25.58 101.28 L23.90 100.10 L22.34 98.78 L20.94 97.32 L19.74 95.73 L18.72 94.01 L17.88 92.21 L17.16 90.35 L16.52 88.46 L15.92 86.57 L15.34 84.67 L14.76 82.77 L14.21 80.86 L13.71 78.93 L13.33 76.96 L13.11 74.98 L13.10 72.98 L13.33 70.98 L13.78 69.00 L14.43 67.06 L15.22 65.17 L16.07 63.33 L16.89 61.54 L17.61 59.76 L18.17 57.98 L18.54 56.17 L18.73 54.30 L18.79 52.36 L18.78 50.36 L18.80 48.31 L18.92 46.26 L19.23 44.24 L19.79 42.30 L20.61 40.48 L21.69 38.81 L23.00 37.30 L24.47 35.92 L26.04 34.66 L27.65 33.46 L29.23 32.29 L30.75 31.10 L32.21 29.87 L33.61 28.58 L34.98 27.26 L36.35 25.93 L37.76 24.63 L39.24 23.40 L40.81 22.29 L42.46 21.29 L44.17 20.42 L45.93 19.65 L47.71 18.94 L49.49 18.23 L51.24 17.47 L52.98 16.63 L54.71 15.69 L56.45 14.67 L58.23 13.60 L60.05 12.57 L61.94 11.65 L63.90 10.93 L65.91 10.49 L67.95 10.37 L70.00 10.61 L72.02 11.17 L73.99 12.01 L75.88 13.04 L77.71 14.16 L79.47 15.29 L81.20 16.33 L82.91 17.22 L84.64 17.95 L86.40 18.51 L88.21 18.96 L90.06 19.35 L91.93 19.74 L93.80 20.20 L95.64 20.78 L97.42 21.51 L99.12 22.39 L100.76 23.40 L102.33 24.51 L103.86 25.67 L105.38 26.84 L106.91 28.00 L108.48 29.15 L110.08 30.29 L111.70 31.45 L113.29 32.67 L114.81 33.99 L116.20 35.43 L117.40 37.03 L118.38 38.77 L119.13 40.64 L119.65 42.60 L119.99 44.62 L120.22 46.64 L120.42 48.63 L120.68 50.55 L121.06 52.41 L121.61 54.20 L122.33 55.95 L123.22 57.69 L124.21 59.44 L125.22 61.24 L126.15 63.10 L126.93 65.02 L127.48 66.99Z" fill="none" stroke="url(#wx-rim)" stroke-width="2.2"/>
+          <!-- hueco estampado: más oscuro arriba a la izquierda, luz abajo a la derecha -->
+          <circle cx="70" cy="70" r="45" fill="url(#wx-well)"/>
+          <circle cx="70" cy="70" r="45" fill="none" stroke="#7A5726" stroke-opacity=".55" stroke-width="1.6"/>
+          <circle cx="70.6" cy="70.8" r="45.6" fill="none" stroke="#F7E5BE" stroke-opacity=".55" stroke-width=".8"/>
+          <circle cx="70" cy="70" r="40.5" fill="none" stroke="#7A5726" stroke-opacity=".45" stroke-width=".7"/>
+          <circle cx="70.4" cy="70.5" r="40.5" fill="none" stroke="#F7E5BE" stroke-opacity=".35" stroke-width=".5"/>
+          <circle cx="70" cy="70" r="37.5" fill="none" stroke="#7A5726" stroke-opacity=".35" stroke-width=".6" stroke-dasharray=".8 2.2"/>
+          <text class="wax-mono hl" x="70.7" y="82.8" text-anchor="middle" data-mono data-cx="70.7" data-cy="70.8" data-maxw="64">D &amp; S</text>
+          <text class="wax-mono" x="70" y="82" text-anchor="middle" data-mono data-cx="70" data-cy="70" data-maxw="64" id="env-monogram">D &amp; S</text>
+        </svg>
+      </button>
+    </div>
+    <div class="env-caption">
+      <p class="kicker">Para</p>
+      <p class="env-to" id="env-to">Nuestros invitados</p>
+      <p class="env-hint">Toca el sello para abrir</p>
+    </div>
+  </div>
+
+  <!-- ============ Navegación flotante ============ -->
+  <nav class="dots-nav" id="dots-nav" aria-label="Secciones">
+    <a href="#bienvenida">Inicio</a>
+    <a href="#detalles">Detalles</a>
+    <a href="#programa">Programa</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#confirmar" class="nav-cta">Confirmar</a>
+  </nav>
+
+  <!-- ============ Portada ============ -->
+  <header class="hero" id="hero">
+    <video class="hero-video" id="hero-video" muted loop playsinline preload="metadata" poster="img/hero.jpg" aria-hidden="true">
+      <source src="media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-shade"></div>
+    <div class="hero-inner">
+      <p class="kicker hero-kicker reveal" id="hero-kicker">Con la bendición de Dios y de nuestras familias</p>
+      <h1 class="hero-names reveal" id="names" aria-live="polite">
+        <span class="n1">Darwin</span><span class="amp">&amp;</span><span class="n2">Sofía</span>
+      </h1>
+      <div class="ornament light reveal" aria-hidden="true"><span></span><i></i><span></span></div>
+      <p class="hero-date reveal" id="date"></p>
+      <p class="hero-place reveal" id="place"></p>
+      <div class="countdown reveal" id="countdown" aria-label="Tiempo que falta para la boda"></div>
+    </div>
+    <a class="scroll-cue" href="#bienvenida" aria-label="Bajar a la invitación"><span></span></a>
+  </header>
+
+  <main>
+    <!-- Bienvenida -->
+    <section class="block welcome" id="bienvenida">
+      <div class="welcome-photos reveal" aria-hidden="true">
+        <figure class="ph ph-a"><img src="img/pareja-1.jpg" alt="" loading="lazy"></figure>
+        <figure class="ph ph-b"><img src="img/pareja-2.jpg" alt="" loading="lazy"></figure>
+      </div>
+      <div class="welcome-text">
+        <p class="kicker reveal">Querida familia y amigos</p>
+        <p class="greeting reveal" id="greeting"></p>
+        <p class="lead reveal" id="message"></p>
+        <p class="signature reveal" id="signature">Darwin &amp; Sofía</p>
+      </div>
+    </section>
+
+    <!-- Banda de foto -->
+    <figure class="band reveal" aria-hidden="true">
+      <img class="band-img" src="img/banda-1.jpg" alt="" loading="lazy">
+      <blockquote>
+        <p id="quote-1">“Dos caminos que se encontraron para seguir siendo uno solo.”</p>
+      </blockquote>
+    </figure>
+
+    <!-- Detalles -->
+    <section class="block" id="detalles" aria-labelledby="t-detalles">
+      <header class="sec-head reveal">
+        <p class="kicker">El gran día</p>
+        <h2 id="t-detalles">Cuándo y dónde</h2>
+        <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+      </header>
+      <dl class="details">
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="11" width="32" height="29" rx="3"/><path d="M8 19h32M16 7v8M32 7v8"/><path d="M24 34c-3-2-6-4-6-7a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 3-3 5-6 7z" class="fill"/></svg>
+          <dt>Fecha</dt><dd id="d-date"></dd>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 5"/></svg>
+          <dt>Hora</dt><dd id="d-time"></dd>
+        </div>
+        <div class="card reveal">
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42s13-12 13-23a13 13 0 0 0-26 0c0 11 13 23 13 23z"/><circle cx="24" cy="19" r="5"/></svg>
+          <dt>Lugar</dt><dd id="d-venue"></dd>
+        </div>
+      </dl>
+      <div class="actions center reveal">
+        <a class="btn" id="maps" target="_blank" rel="noopener" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Cómo llegar
+        </a>
+        <a class="btn ghost" id="gcal-top" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
+          Guardar la fecha
+        </a>
+      </div>
+      <div class="dress reveal" id="dress">
+        <p class="kicker">Código de vestimenta</p>
+        <p class="dress-title" id="dress-title">Formal</p>
+        <p class="dress-lead" id="dress-note">Nos encantaría verlos en los tonos de nuestra boda</p>
+        <ul class="swatches" id="swatches" aria-label="Colores sugeridos"></ul>
+        <div class="avoid" id="avoid"></div>
+      </div>
+    </section>
+
+    <!-- Programa -->
+    <section class="block" id="programa" aria-labelledby="t-programa">
+      <div id="program-block">
+        <header class="sec-head reveal">
+          <p class="kicker">Itinerario</p>
+          <h2 id="t-programa">Programa del día</h2>
+          <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+        </header>
+        <ol class="program" id="program"></ol>
+      </div>
+    </section>
+
+    <!-- Banda de foto 2 -->
+    <figure class="band band-2 reveal" aria-hidden="true">
+      <img class="band-img" src="img/banda-2.jpg" alt="" loading="lazy">
+      <blockquote>
+        <p class="script" id="quote-2">Para siempre</p>
+      </blockquote>
+    </figure>
+
+    <!-- Galería -->
+    <section class="block wide" id="nosotros" aria-labelledby="t-fotos">
+      <div id="gallery-block">
+        <header class="sec-head reveal">
+          <p class="kicker">Un poco de nosotros</p>
+          <h2 id="t-fotos">Nuestra historia</h2>
+          <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+        </header>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <!-- Confirmación -->
+    <section class="block" id="confirmar" aria-labelledby="t-rsvp">
+      <div id="rsvp-block">
+        <header class="sec-head reveal">
+          <p class="kicker">R.S.V.P.</p>
+          <h2 id="t-rsvp">Confirma tu asistencia</h2>
+          <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+          <div class="deadline" id="deadline" hidden>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="11" width="32" height="29" rx="3"/><path d="M8 19h32M16 7v8M32 7v8"/><path d="M18 29l4 4 8-8"/></svg>
+            <span class="dl-label">Confirma tu asistencia antes del</span>
+            <span class="dl-date" id="deadline-date"></span>
+          </div>
+        </header>
+
+        <p class="notice" id="no-code" hidden>Para confirmar, abre el enlace personal o escanea el código QR que te enviamos.</p>
+        <p class="notice" id="bad-code" hidden>No encontramos esta invitación. Revisa el enlace que te enviamos o escríbenos.</p>
+
+        <form class="reply-card reveal" id="rsvp" hidden novalidate>
+          <p class="reply-for" id="reply-for"></p>
+          <p id="seats" class="seats"></p>
+          <fieldset class="choice-set">
+            <legend class="sr-only">¿Asistirán?</legend>
+            <div class="choice">
+              <label class="choice-yes">
+                <input type="radio" name="attending" value="yes" required>
+                <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="26" r="10"/><circle cx="30" cy="26" r="10"/><path d="M15 12l3 4 3-4M27 12l3 4 3-4"/></svg>
+                <span><b>¡Sí, ahí estaremos!</b><small>Con mucho gusto</small></span>
+              </label>
+              <label class="choice-no">
+                <input type="radio" name="attending" value="no">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40c-8-6-15-11-15-19a8 8 0 0 1 15-4 8 8 0 0 1 15 4c0 8-7 13-15 19z"/></svg>
+                <span><b>No podremos asistir</b><small>Los acompañamos de corazón</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div id="yes-fields" class="yes-fields" hidden>
+            <label for="guests">¿Cuántas personas asistirán?</label>
+            <div class="stepper" id="stepper">
+              <button type="button" class="step" data-step="-1" aria-label="Una persona menos">−</button>
+              <output id="guests-out" aria-live="polite">1</output>
+              <button type="button" class="step" data-step="1" aria-label="Una persona más">+</button>
+              <select id="guests" class="sr-only" tabindex="-1" aria-hidden="true"></select>
+            </div>
+            <p class="hint center" id="guests-hint"></p>
+            <label for="names-input">Nombres de quienes asistirán</label>
+            <textarea id="names-input" placeholder="Un nombre por línea"></textarea>
+            <label for="email">Correo electrónico</label>
+            <input id="email" type="email" autocomplete="email" placeholder="tu@correo.com">
+            <p class="hint">Te enviaremos la invitación de calendario a este correo.</p>
+          </div>
+          <label for="note">Unas palabras para nosotros <span class="opt">(opcional)</span></label>
+          <textarea id="note" placeholder="Un deseo, un consejo, una canción que no puede faltar…"></textarea>
+          <div class="actions center"><button class="btn big" type="submit" id="send">Enviar respuesta</button></div>
+        </form>
+
+        <div class="done" id="confirmed" hidden>
+          <p class="script done-title" id="done-title"></p>
+          <p id="done-text" class="done-text"></p>
+          <div id="entry" hidden>
+            <div class="ticket">
+              <div class="ticket-head">
+                <span class="kicker">Pase de ingreso</span>
+                <span class="ticket-names" id="ticket-names"></span>
+              </div>
+              <div class="qr" id="qr"></div>
+              <div class="ticket-foot">
+                <span id="ticket-family"></span>
+                <span id="ticket-seats"></span>
+              </div>
+            </div>
+            <p class="hint center">Muestren este pase en la entrada el día de la boda.</p>
+            <div class="actions center">
+              <a class="btn" id="gcal" target="_blank" rel="noopener">Agregar a Google Calendar</a>
+              <a class="btn ghost" id="ics" download="boda.ics">Otro calendario</a>
+              <a class="btn ghost" id="qr-dl" download="pase-boda.png">Guardar pase</a>
+            </div>
+          </div>
+          <div class="actions center">
+            <button class="btn link" type="button" id="change">Cambiar mi respuesta</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site" id="footer-wrap">
+    <div class="foot-seal" aria-hidden="true">
+      <svg viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="37" fill="none" stroke="#B89565" stroke-width="1"/>
+        <circle cx="40" cy="40" r="33" fill="none" stroke="#B89565" stroke-opacity=".45" stroke-width=".7"/>
+        <text class="foot-mono" x="40" y="47" text-anchor="middle" data-mono data-cx="40" data-cy="40" data-maxw="46" id="foot-monogram">D &amp; S</text>
+      </svg>
+    </div>
+    <p class="script foot-names" id="footer">Darwin &amp; Sofía</p>
+    <p class="foot-date" id="foot-date"></p>
+  </footer>
+
+  <!-- Visor de fotos -->
+  <dialog class="lightbox" id="lightbox" aria-label="Foto ampliada">
+    <button class="lb-close" type="button" data-lb="close" aria-label="Cerrar">×</button>
+    <button class="lb-nav prev" type="button" data-lb="-1" aria-label="Foto anterior">‹</button>
+    <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+    <button class="lb-nav next" type="button" data-lb="1" aria-label="Foto siguiente">›</button>
+  </dialog>
+
+  <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/demo-local.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/invitacion.js"></script>
+</body>
+</html>
