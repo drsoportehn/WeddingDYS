@@ -9,7 +9,7 @@ window.CONFIG = {
   SITE_URL: "https://drsoportehn.github.io/WeddingDYS/",
   // URL del Web App de Google Apps Script (envío de invitación de calendario).
   // Déjalo vacío para desactivar el envío automático.
-  CALENDAR_WEBHOOK_URL: "",
+  CALENDAR_WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbyfSsBvBPpSTeNnZQc8n3EKRyovmnzNYQTghYKioap99KUhxleJnPyn8PBYyYPoosB9/exec",
   TIMEZONE: "America/Tegucigalpa",
   TZ_OFFSET: "-06:00"
 };
